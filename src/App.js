@@ -1,6 +1,8 @@
 import './App.css';
 import Header from './components/Header/Header.component';
 import Sidebar from './components/Sidebar/Sidebar.component';
+import Feed from './components/Feed/Feed.component';
+import WidgetBar from './components/WidgetBar/WidgetBar.component';
 
 function App() {
   return (
@@ -8,8 +10,8 @@ function App() {
       <Header />
       <div className="app-body">
         <Sidebar />
-        {/* <Feed />
-        <Widgets /> */}
+        <Feed />
+        <WidgetBar/> 
       </div>
     </div>
   );

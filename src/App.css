@@ -1,5 +1,11 @@
-.app-body {
+.app {
     background-color: #f3f2ef;
-    padding-top: 54px;
+    
+}
+
+.app-body {
+    display: flex;
+    padding: 54px 30px 0 30px;
+    margin: 0 auto;
     height: 100vh;
 }
