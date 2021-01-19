@@ -8,27 +8,35 @@ import EventNoteIcon from '@material-ui/icons/EventNote';
 import SubjectIcon from '@material-ui/icons/Subject';
 import Post from '../Post/Post.component';
 import { db } from '../../firebase.js';
+import firebase from 'firebase';
 
 
 const Feed = () => {
+    const [input, setInput] = useState('')
     const [posts, setPosts] = useState([]);
     
     useEffect(() => {
-        db.collection("posts").onSnapshot(snapshot => (
-            setPosts(snapshot.docs.map(doc => (
-                {
+        db.collection("posts").onSnapshot((snapshot) => 
+            setPosts(
+                snapshot.docs.map((doc) => ({
                     id: doc.id,
-                    data: db.data(),                
+                    data: db.data(),              
                 }))
             )
-        ))
-    }, [])
+        );
+    }, []);
 
     const sendPost = (e) => {
         e.preventDefault();
 
-        
-    }
+        db.collection("posts").add({
+            name: "Alex Sumoski",
+            description: "test",
+            message: input, 
+            photoUrl: '', 
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+    };
 
     return (
         <div className="feed">
@@ -36,7 +44,12 @@ const Feed = () => {
                 <div className="feed-input">
                     <CreateIcon />
                     <form action="">
-                        <input type="text" placeholder="Start a post"/>
+                        <input 
+                        value={input} 
+                        onChange={e => setInput(e.target.value)} 
+                        type="text" 
+                        placeholder="Start a post"
+                        />
                         <button onclick={sendPost} type="submit">Send</button>
                     </form>
                 </div>
@@ -48,15 +61,16 @@ const Feed = () => {
                 </div>
             </div>
 
-            {posts.map((post) => (
-                <Post />
+            {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
+                <Post 
+                key={id}
+                name={name}
+                description={description}
+                message={message}
+                photoUrl={photoUrl}
+                />
             ))}
 
-            <Post 
-            name="Alexander Sumoski"
-            description="Web Developer | Actively seeking new opportunities"
-            message="This is a test post."
-            />
         </div>
     )
 }
