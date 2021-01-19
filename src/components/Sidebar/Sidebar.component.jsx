@@ -1,4 +1,4 @@
-import { Avatar } from '@material-ui/core'
+import { Avatar } from '@material-ui/core';
 import React from 'react';
 import './Sidebar.styles.scss';
 import TurnedInIcon from '@material-ui/icons/TurnedIn';
@@ -38,6 +38,7 @@ function Sidebar() {
                 </div>
             </div>
             <div className="sidebar-bottom">
+                {recentItem("test")}
                 {recentItem("test")}
             </div>
         </div>

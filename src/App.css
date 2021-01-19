@@ -6,6 +6,7 @@
 .app-body {
     display: flex;
     padding: 54px 30px 0 30px;
+    max-width: 1100px;
     margin: 0 auto;
     height: 100vh;
 }

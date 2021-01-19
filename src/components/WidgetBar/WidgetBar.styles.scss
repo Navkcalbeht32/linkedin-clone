@@ -1,11 +1,11 @@
 .widget-bar {
     position: sticky;
-    flex: 0.2;
+    flex: 0.3;
     top: 80px;
     border-radius: 10px;
     text-align: center;
     height: fit-content;
-    
+    margin-left: 25px;
 
     .widget-bar-container {
        background-color: #fff;
@@ -13,6 +13,7 @@
        border-radius: 10px;
        margin-bottom: 20px;
        height: 200px;
+       border: 1px solid lightgray;
     }
 
 }
